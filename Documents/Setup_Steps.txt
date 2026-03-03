@@ -1,0 +1,136 @@
+PART 2: AWS SETUP & EXPLORATION 
+---
+
+1. AWS ACCOUNT SETUP
+
+---
+
+An existing Amazon Web Services (AWS) account was used for this task.
+The working region selected for all services was:
+
+Region: ap-south-1 (Asia Pacific – Mumbai)
+
+All resources (EC2 instance and S3 bucket) were created in this region to maintain consistency and avoid cross-region configuration issues.
+
+---
+
+2. CONFIGURE AWS CREDENTIALS SECURELY (IAM USER + ACCESS KEYS)
+
+---
+
+To follow security best practices, programmatic access was configured using an IAM user instead of the root account.
+
+Step 1: Created an IAM user in the AWS Management Console.
+Step 2: Enabled programmatic access for the IAM user.
+Step 3: Generated Access Key ID and Secret Access Key.
+Step 4: Downloaded the credentials securely.
+
+AWS CLI Configuration:
+
+The AWS CLI was configured locally using the following command:
+
+aws configure
+
+The following details were entered:
+
+- AWS Access Key ID: (Generated from IAM user)
+- AWS Secret Access Key: (Generated from IAM user)
+- Default region name: ap-south-1
+- Default output format: json
+
+Verification:
+
+The configuration was verified by running:
+
+aws s3 ls
+
+This confirmed that the AWS CLI was successfully authenticated and connected to the AWS account.
+
+---
+
+3. LAUNCH A BASIC EC2 INSTANCE (FREE TIER ELIGIBLE)
+
+---
+
+An EC2 instance was launched using the AWS Management Console.
+
+Configuration Details:
+
+Instance Name:
+s3-project-ec2
+
+Amazon Machine Image (AMI):
+Amazon Linux 2023 (kernel-6.1)
+Architecture: x86_64
+Virtualization: HVM
+Root Device Type: EBS
+
+Instance Type:
+t3.micro
+
+- 2 vCPUs
+- 1 GiB RAM
+- Suitable for Free Tier usage and small workloads
+
+Key Pair:
+A new key pair was created:
+Key Name: nafisa-ec2-key
+Key Type: RSA
+File Format: .pem
+
+The .pem file was downloaded securely and stored locally.
+File permissions were adjusted in Linux using:
+
+chmod 400 nafisa-ec2-key.pem
+
+Network Configuration:
+
+- Auto-assign Public IP: Enabled
+- Security Group: Created new security group
+- Inbound Rule: SSH (Port 22) allowed from 0.0.0.0/0
+
+Storage Configuration:
+
+- Root Volume: 8 GiB
+- Volume Type: gp3
+
+Instance Status After Launch:
+
+- Instance State: Running
+- Status Checks: 3/3 checks passed
+- Availability Zone: ap-south-1a
+- Public IPv4 Address: Assigned successfully
+
+This confirms that the EC2 instance was launched and is operational.
+
+---
+
+4. CREATE AN S3 BUCKET WITH APPROPRIATE PERMISSIONS
+
+---
+
+An Amazon S3 bucket was created using AWS CLI.
+
+Command used:
+
+aws s3 mb s3://nafisa-s3-project-2026 --region ap-south-1
+
+This created a new bucket in the Mumbai region.
+
+Verification:
+
+aws s3 ls
+
+The bucket appeared in the list, confirming successful creation.
+
+Bucket Configuration:
+
+- Bucket Name: nafisa-s3-project-2026
+- Region: ap-south-1
+- Public Access: Disabled (Private by default)
+- No public bucket policies applied
+
+The bucket follows secure configuration practices by keeping public access blocked.
+
+---
+
