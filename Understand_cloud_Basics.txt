@@ -1,0 +1,70 @@
+Task 1 – Cloud & AWS Understanding
+
+1. What is Cloud Computing?
+
+Cloud computing is the delivery of computing services such as servers, storage, databases, networking, and software over the internet instead of using local physical infrastructure.
+
+Instead of buying and maintaining hardware, organizations rent resources from cloud providers like Amazon Web Services (AWS), Microsoft Azure, and Google Cloud.
+
+Key Characteristics:
+- On-demand self-service
+- Pay-as-you-go pricing
+- Scalability
+- High availability
+- Global accessibility
+
+Example:
+Instead of purchasing a physical server to host a website, we can launch a virtual server in AWS within minutes and pay only for the usage.
+
+
+2. Difference Between IaaS, PaaS, and SaaS
+
+IaaS (Infrastructure as a Service):
+In this model, the cloud provider offers virtualized computing resources over the internet. The user manages the operating system, applications, and data, while the provider manages hardware and virtualization.
+Example: Amazon EC2
+Used when full control over the infrastructure is required.
+
+PaaS (Platform as a Service):
+In this model, the cloud provider manages the infrastructure, operating system, and runtime environment. The user focuses only on deploying and managing application code and data.
+Example: AWS Elastic Beanstalk
+Used when developers want to deploy applications without managing servers.
+
+SaaS (Software as a Service):
+In this model, the cloud provider manages everything. The user simply accesses the software over the internet.
+Examples: Gmail, Salesforce
+Used for ready-to-use software applications.
+
+
+3. Why AWS is Used and Common Real-World Use Cases
+
+Amazon Web Services (AWS) is one of the leading cloud providers globally. It is widely used because:
+
+- It provides more than 200 cloud services.
+- It has global data centers across multiple regions.
+- It offers strong security and compliance.
+- It provides a Free Tier for learning and experimentation.
+- It ensures high availability and reliability.
+
+Common Real-World Use Cases:
+- Hosting websites and web applications
+- Data backup and disaster recovery
+- Big data processing and analytics
+- Machine learning workloads
+- DevOps and CI/CD pipelines
+- IoT and real-time data processing
+
+
+4. Purpose of EC2 and S3 in Cloud Architecture
+
+Amazon EC2 (Elastic Compute Cloud):
+EC2 provides virtual servers (instances) in the cloud. It is mainly used for compute power. Users can run applications, databases, and Python scripts on EC2 instances. It is scalable and flexible.
+
+Example:
+A Python script using Boto3 can run on an EC2 instance to upload or download files from S3.
+
+Amazon S3 (Simple Storage Service):
+S3 is an object storage service used to store and retrieve files such as CSV files, images, backups, and logs. It is highly durable and scalable.
+
+Example:
+Uploaded CSV files from a local system or EC2 instance can be stored securely in an S3 bucket.
+
