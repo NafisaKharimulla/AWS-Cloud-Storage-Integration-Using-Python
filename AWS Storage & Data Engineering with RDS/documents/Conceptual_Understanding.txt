@@ -1,0 +1,81 @@
+Part 1: Conceptual Understanding
+
+1. What is a Data Lake and how S3 fits into it
+
+A Data Lake is a centralized repository that allows organizations to store large volumes of data in its raw format. The data can be structured (tables), semi-structured (JSON, XML), or unstructured (images, logs, videos). Unlike traditional databases, data lakes do not require a predefined schema before storing data.
+
+Amazon S3 is commonly used as the storage layer for a Data Lake. It provides highly scalable and durable object storage where raw datasets can be stored before processing. Data stored in S3 can later be analyzed using analytics services or processing frameworks.
+
+Example flow:
+Applications / Systems → Raw Data → Amazon S3 (Data Lake Storage) → Data Processing → Analytics
+
+In many modern architectures, S3 acts as the central storage location where all incoming data is stored before being processed or analyzed.
+
+-----------------------------------------------------
+
+2. Difference between Data Lake and Data Warehouse
+
+A Data Lake stores raw data in its original format and supports structured, semi-structured, and unstructured data. It follows a schema-on-read approach, meaning the structure of the data is defined when the data is accessed.
+
+A Data Warehouse stores processed and structured data that has already been cleaned and organized. It follows a schema-on-write approach, meaning the schema is defined before the data is stored.
+
+Key differences:
+
+Data Lake
+- Stores raw data
+- Supports multiple data types
+- Lower storage cost
+- Used for big data analytics, machine learning, and data science
+
+Data Warehouse
+- Stores structured and processed data
+- Optimized for querying and reporting
+- Higher storage cost
+- Used for business intelligence and reporting
+
+-----------------------------------------------------
+
+3. Purpose and Use Cases of Amazon Glacier
+
+Amazon Glacier is a low-cost cloud storage service designed for long-term data archiving. It is used to store data that is rarely accessed but must be retained for long periods.
+
+The main purpose of Glacier is to reduce storage costs for historical or archival data. Since the data is not accessed frequently, retrieval times can take minutes or hours.
+
+Common use cases include:
+- Backup archives
+- Compliance and regulatory records
+- Long-term financial data storage
+- Historical logs and old datasets
+
+Organizations often move older data from standard storage to Glacier to minimize storage costs while still maintaining data durability.
+
+-----------------------------------------------------
+
+4. What AWS RDS is and when to use it
+
+Amazon RDS (Relational Database Service) is a managed database service provided by AWS that allows users to run relational databases in the cloud without managing the underlying infrastructure.
+
+RDS automates several administrative tasks including database setup, backups, patching, scaling, and monitoring. This allows developers and data engineers to focus on application development instead of database management.
+
+RDS supports several database engines including MySQL, PostgreSQL, Microsoft SQL Server, MariaDB, and Oracle.
+
+RDS should be used when an application requires a relational database but the team wants AWS to handle database maintenance, backups, updates, and scaling automatically.
+
+-----------------------------------------------------
+
+5. Difference between Managed Databases (RDS) and Self-Managed Databases on EC2
+
+Managed Databases (RDS):
+- AWS manages the database infrastructure
+- Automatic backups and updates
+- Built-in monitoring and scaling
+- Easier to deploy and maintain
+- Reduced operational overhead
+
+Self-Managed Databases on EC2:
+- The user installs and manages the database manually
+- Backup, patching, and scaling must be configured by the user
+- Full control over the database configuration
+- Higher operational responsibility
+
+- RDS provides a managed database environment where AWS handles most administrative tasks, while running a database on EC2 requires the user to manage the entire database setup and maintenance.
