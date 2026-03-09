@@ -1,0 +1,73 @@
+PART 5: EC2 CONTEXT 
+
+How the Same Python Scripts Would Run on Amazon EC2
+
+The same Python scripts can run on an EC2 instance exactly like they run on a local system because EC2 is simply a virtual server in the cloud.
+Steps involved:
+-Launch an EC2 instance (Linux/Ubuntu/Amazon Linux).
+-Install Python and required libraries (e.g., boto3).
+-Copy the project files to EC2 (using SCP, Git clone, or directly creating files).
+-Run the script using: python3 script_name.py.
+-If the script interacts with Amazon S3, it works the same way because boto3 connects through AWS APIs over the internet.
+-So technically, there is no change in Python logic — only the environment changes (local machine vs cloud server).
+
+
+
+Difference Between Running Scripts Locally vs on EC2
+
+Running Locally:
+-Uses your laptop resources (CPU, RAM, storage).
+-Uses AWS CLI credentials stored in ~/.aws/credentials.
+-Depends on your internet connection.
+-Good for development and testing.
+
+Running on EC2:
+-Uses cloud server resources.
+-Can run continuously (24/7).
+-Does not depend on your laptop being ON.
+-More scalable and production-ready.
+
+
+Can use IAM roles instead of storing access keys.
+
+Local = Development environment
+EC2 = Cloud production environment
+
+
+How IAM Roles Replace Access Keys on EC2
+
+-Instead of storing AWS access keys in the code or local credentials file, we can attach an IAM Role to the EC2 instance.
+
+Using AWS Identity and Access Management (IAM):
+-Create a role with S3 permissions.
+-Attach that role to the EC2 instance.
+-When the Python script runs on EC2, boto3 automatically gets temporary credentials from the instance metadata service.
+-No access key or secret key is stored in code.
+
+Advantages:
+-More secure (no hardcoded credentials).
+-Automatic key rotation.
+-Best practice for production systems.
+
+
+
+To run the script from EC2:
+
+-Launch EC2 instance.
+-Attach IAM role with required S3 permissions.
+
+SSH into EC2:
+-ssh ec2-user@public-ip
+
+Install dependencies:
+-pip3 install boto3
+
+Run:
+-python3 s3_full_automation.py
+
+-If IAM role is attached correctly, the script will access S3 without requiring any access keys.
+
+Conclusion
+The same automation script works both locally and on EC2 because EC2 behaves like a remote Linux system.
+The main difference is authentication and execution environment.
+Using IAM roles on EC2 improves security by removing the need for access keys.
