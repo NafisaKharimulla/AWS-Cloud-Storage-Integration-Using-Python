@@ -250,26 +250,28 @@ Benefits:
 
 ---
 
-# Project Structure
+## Project Structure
 
+```text
 AWS-Cloud-Storage-Python/
 │
-├── Documents
-│ ├── Contest.txt
-│ ├── Setup Steps.txt
+├── Documents/
+│   ├── Contest.txt
+│   ├── Setup Steps.txt
 │
-├── Screenshots
-│ ├── EC2 running.png
-│ ├── Instance Launched.png
-│ ├── Upload the files.png
+├── Screenshots/
+│   ├── EC2_running.png
+│   ├── Instance_Launched.png
+│   ├── Upload_the_files.png
 │
-├── Scripts
-│ ├── aws_setup.sh
-│ ├── upload_to_s3.py
-│ ├── downloadfile.py
-│ ├── s3_full_automation.py
+├── Scripts/
+│   ├── aws_setup.sh
+│   ├── upload_to_s3.py
+│   ├── downloadfile.py
+│   ├── s3_full_automation.py
 │
-├── README.md
+└── README.md
+```
 
 ---
 
