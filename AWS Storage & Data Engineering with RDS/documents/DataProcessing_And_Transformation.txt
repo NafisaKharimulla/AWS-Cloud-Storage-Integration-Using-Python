@@ -1,0 +1,16 @@
+### Part 4: Data Processing & Transformation
+
+Step 1: Read data from S3  
+I loaded the raw dataset cleaned_ecommerce_data.csv from the raw/ folder of the S3 bucket nafisa-s3-project-2026 using Python and Boto3.
+
+Step 2: Basic Cleaning  
+I checked for missing values and handled them by filling numeric columns with their mean and categorical columns with their mode. I also verified and corrected data types where necessary.
+
+Step 3: Summary Metrics  
+Generated descriptive statistics of the dataset to understand the overall distribution of the data.
+
+Step 4: Group-wise Aggregations  
+Performed aggregations based on a category column to analyze metrics per group.
+
+Step 5: Store Processed Data Back to S3  
+Saved the cleaned and transformed dataset as processed_data.csv in the processed/ folder of the same S3 bucket.
