@@ -1,0 +1,118 @@
+PART 2: AWS PROVISIONING
+
+Objective:
+Provision cloud infrastructure to store raw data and manage a relational database for the ecommerce data pipeline.
+
+Services Used:
+- Amazon S3 (Data Lake Storage)
+- Amazon RDS (Managed Relational Database)
+- AWS Security Groups (Network Access Control)
+
+------------------------------------------------------------
+
+Step 1: Created an S3 Bucket (Raw Data Lake)
+
+1. Logged into the AWS Console.
+2. Navigated to the Amazon S3 service.
+3. Clicked on "Create bucket".
+4. Provided the bucket name: nafisa-s3-project-2026.
+5. Selected the region: ap-south-1 (Mumbai).
+6. Kept default configurations for versioning and encryption.
+7. Created the bucket successfully.
+
+Folder Structure Created in S3:
+
+nafisa-s3-project-2026/
+    raw/
+    processed/
+    logs/
+
+Purpose of each folder:
+- raw/ → stores original datasets uploaded from local system.
+- processed/ → stores transformed datasets after processing.
+- logs/ → stores pipeline execution logs.
+
+The dataset cleaned_ecommerce_data.csv was uploaded into the raw folder.
+
+------------------------------------------------------------
+
+Step 2: Provisioned an Amazon RDS Database
+
+1. Navigated to the Amazon RDS service in the AWS Console.
+2. Clicked on "Create Database".
+3. Selected the engine: SQL Server Express Edition.
+4. Selected the instance class: db.t3.micro (free-tier eligible).
+5. Configured the database settings:
+   - DB Instance Identifier: ecommerce-sql
+   - Master Username: admin
+6. Enabled default storage configuration:
+   - Storage Type: General Purpose SSD (gp2)
+   - Allocated Storage: 20 GB
+7. Selected the region: ap-south-1 (Mumbai).
+8. Created the RDS instance successfully.
+
+After provisioning, AWS generated the database endpoint:
+
+ecommerce-sql.c3i6myqiiehv.ap-south-1.rds.amazonaws.com
+
+------------------------------------------------------------
+
+Step 3: Configure Security Groups
+
+A security group was configured to allow database access.
+
+Inbound Rule Configured:
+- Type: SQL Server
+- Port: 1433
+- Source: My Public IP
+
+Security Group Name:
+ecommerce-rds-sg
+
+Purpose:
+This allows my local system to securely connect to the RDS database instance.
+
+Outbound Rule:
+- Allow all traffic (default configuration)
+
+------------------------------------------------------------
+
+Step 4: Validate Connectivity from Local System
+
+To validate the connection between the local machine and the RDS instance:
+
+1. Installed required Python libraries:
+   - pyodbc
+   - boto3
+
+2. Installed ODBC driver for SQL Server.
+
+3. Created a Python connection script using pyodbc.
+
+Example connection structure:
+
+Driver={ODBC Driver 17 for SQL Server}
+Server=ecommerce-sql.c3i6myqiiehv.ap-south-1.rds.amazonaws.com
+Port=1433
+Username=admin
+Password=<DB_PASSWORD>
+
+4. Executed a test Python script to verify connectivity.
+
+5. Successfully connected to the database and created a database named:
+
+ecommerce
+
+------------------------------------------------------------
+
+Result
+
+The AWS infrastructure required for the data pipeline was successfully provisioned:
+
+- S3 bucket created to store raw data.
+- Folder structure organized for data lake architecture.
+- RDS SQL Server instance deployed.
+- Security group configured for database access.
+- Database connectivity validated using Python from the local system.
+
+This completes the AWS provisioning stage required for building the data ingestion and analytics pipeline.
