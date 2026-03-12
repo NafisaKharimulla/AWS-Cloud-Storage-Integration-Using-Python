@@ -1,0 +1,94 @@
+Task 6: SQL Practice & Analytics
+
+Objective
+The objective of this task is to perform analytical queries on the relational database hosted on AWS RDS. SQL queries were executed through Python scripts to analyze the data stored in the sales_data table. The queries demonstrate the use of aggregation functions, grouping, filtering, sorting, ranking, and identifying top performing records.
+
+Database Details
+Database Name: ecommerce
+Table Name: sales_data
+
+Step 1: Aggregation Queries
+Aggregation functions such as SUM, AVG, and COUNT were used to calculate summary statistics from the dataset.
+
+File: aggregation_query.py
+This script calculates the total number of orders, total items sold, and average price of products from the sales_data table.
+
+Output Example:
+(5000, 8200, 450.25)
+
+Step 2: GROUP BY Query
+GROUP BY was used to group records based on the category column and calculate aggregated results.
+
+File: groupby_query.py
+This script calculates the total quantity of items sold for each product category.
+
+Output :
+('Electronics', 3500)
+('Clothing', 2100)
+('Accessories', 2600)
+
+
+Step 3: HAVING Clause
+The HAVING clause was used to filter aggregated results after grouping.
+
+File: having_query.py
+
+This script returns only those product categories where the total quantity sold is greater than a specified value.
+
+Output Example:
+('Electronics', 3500)
+('Accessories', 2600)
+
+
+Step 4: Date-Based Filtering
+Date filtering was used to retrieve records within a specific time period.
+
+File: date_filter_query.py
+
+Description
+This script filters records based on the order_date column to retrieve transactions from a specific date range.
+
+Output :
+(1023, 'Laptop', 'Electronics', 800, 1, 2024-02-10)
+(1024, 'Headphones', 'Electronics', 120, 2, 2024-03-15)
+
+
+Step 5: Sorting Results
+Sorting was performed using ORDER BY to organize the results based on price.
+
+File: sorting_query.py
+This script retrieves products sorted by price in descending order.
+
+Output :
+('Laptop', 1200)
+('Tablet', 900)
+('Headphones', 200)
+
+
+Step 6: Ranking Results
+Ranking functions were used to assign rank values based on product price.
+
+File: ranking_query.py
+This script ranks products according to their price using a SQL ranking function.
+
+Output :
+('Laptop', 1200, 1)
+('Tablet', 900, 2)
+('Headphones', 200, 3)
+
+Step 7: Identifying Top Performers
+SQL queries were used to identify the top selling products based on total quantity sold.
+
+File: top_products_query.py
+This script calculates total sales per product and displays the top performing products.
+
+Output Example:
+('Laptop', 900)
+('Headphones', 850)
+('Shoes', 720)
+
+This indicates the products with the highest sales.
+
+Result
+Multiple analytical SQL queries were successfully executed on the AWS RDS database using Python scripts. These queries helped in summarizing, filtering, ranking, and analyzing the data stored in the sales_data table.
+
