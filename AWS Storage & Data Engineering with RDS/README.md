@@ -21,6 +21,7 @@ Dataset
 - Columns: InvoiceNo (PK), StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country
 
 Architecture Overview
+'''
 Local System / EC2
 |
 | Python Scripts (Boto3, Pandas, pyodbc)
@@ -51,6 +52,8 @@ v
 | CSV Export / BI |
 
 ---
+
+'''
 
 Project Tasks & Implementation
 
