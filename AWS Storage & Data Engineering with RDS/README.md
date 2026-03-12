@@ -1,29 +1,38 @@
-AWS Storage & Data Engineering with RDS
+"""
 
-Project Overview
-This project demonstrates an end-to-end cloud-based data pipeline using AWS Storage Services (S3, Glacier), AWS RDS, Python, Pandas, and SQL. A CSV dataset containing sales transactions is used to simulate a real-world scenario covering data ingestion, processing, storage, analytics, and export.
+# AWS Storage & Data Engineering with RDS
 
-Technologies Used
+## Project Overview
 
-- Cloud Platform: AWS
-- Storage Services: Amazon S3, Amazon Glacier (conceptual)
-- Database: AWS RDS (SQL Server)
-- Programming Language: Python 3.x
-- AWS SDK: Boto3
-- Data Processing: Pandas
-- Query Language: SQL
-- Database Connection: pyodbc
+This project demonstrates an end-to-end cloud-based data pipeline using AWS Storage Services (S3, Glacier), AWS RDS, Python, Pandas, and SQL.
+A CSV dataset containing sales transactions is used to simulate a real-world scenario covering data ingestion, processing, storage, analytics, and export.
 
-Dataset
+## Technologies Used
+
+Cloud Platform: AWS
+Storage Services: Amazon S3, Amazon Glacier (conceptual)
+Database: AWS RDS (SQL Server)
+Programming Language: Python 3.x
+AWS SDK: Boto3
+Data Processing: Pandas
+Query Language: SQL
+Database Connection: pyodbc
+
+## Dataset
 
 - Format: CSV
 - Size: 397,924+ rows
-- Columns: InvoiceNo (PK), StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country
+- Columns:
+  - InvoiceNo (Primary Key)
+  - StockCode
+  - Description
+  - Quantity
+  - InvoiceDate (Date/timestamp)
+  - UnitPrice (Numeric)
+  - CustomerID
+  - Country
 
-Architecture Overview
-
-"""
-Architecture Overview:
+## Architecture Overview
 
 +-----------------------+
 | Local System / EC2 |
@@ -52,26 +61,25 @@ v
 | CSV Export / Reporting|
 | - exported_sales_data.csv |
 +-----------------------+
-"""
 
-Project Tasks & Implementation
+## Project Tasks & Implementation
 
 Part 1: Conceptual Understanding
 
 - Explored Data Lake vs Data Warehouse
 - Used S3 as raw and processed data storage
-- Discussed Glacier for archival storage
-- Explained RDS and difference from self-managed databases
+- Discussed Glacier for archival
+- Explained AWS RDS vs self-managed databases
 
 Part 2: AWS Provisioning
 
-- Created S3 bucket 'ecommerce-data-lake' with /raw/ and /processed/ folders
-- Launched RDS SQL Server instance 'ecommerce-sql' with proper security groups
+- Created S3 bucket `ecommerce-data-lake` with /raw/ and /processed/ folders
+- Launched RDS SQL Server instance `ecommerce-sql` with proper security groups
 - Validated connectivity using pyodbc
 
 Part 3: Data Ingestion & Storage
 
-- Uploaded raw CSV to S3 using Python
+- Uploaded raw CSV to S3 using Python (Boto3)
 - Listed and downloaded files from S3
 - Explained archival to Glacier
 
@@ -82,7 +90,7 @@ File downloaded successfully: cleaned_ecommerce_data.csv
 Part 4: Data Processing & Transformation
 
 - Read data from S3 using Pandas
-- Handled missing values and corrected data types
+- Handled missing values, corrected data types
 - Generated summary metrics, group-wise aggregations, and date-based analysis
 - Stored processed datasets back to S3
 
@@ -93,10 +101,15 @@ Total records processed: 397,924
 Part 5: AWS RDS – Database Operations
 
 - Created sales_data table:
+  - id: INT IDENTITY PK (Auto-generated primary key)
+  - order_id: INT (Invoice Number)
+  - product_name: VARCHAR(255) (Product Description)
+  - category: VARCHAR(100) (Country/Category)
+  - price: FLOAT (Unit Price)
+  - quantity: INT (Quantity Ordered)
+  - order_date: DATETIME (Transaction Date)
 
-Columns: id (PK), order_id, product_name, category, price, quantity, order_date
-
-- Performed CRUD operations:
+- Performed CRUD operations using Python and SQL
 
 Sample Output:
 Data inserted successfully
@@ -106,7 +119,7 @@ Data deleted successfully
 
 Part 6: SQL Practice & Analytics
 
-- Queries executed for SUM, AVG, COUNT, GROUP BY, HAVING, date-based filtering, sorting, ranking, top/bottom performers
+- Executed queries for: SUM, AVG, COUNT, GROUP BY, HAVING, date-based filtering, sorting, ranking, top/bottom performers
 
 Sample Output:
 Total Sales per Country:
@@ -123,8 +136,7 @@ CHRISTMAS TREE DECORATION 1190
 
 Part 7: CSV Import & Export with RDS
 
-- CSV Import:
-  Imported cleaned_ecommerce_data.csv into sales_data using Python batch insertion
+- CSV Import: Imported cleaned_ecommerce_data.csv into sales_data table using Python batch insertion
 
 Import Output:
 Inserted rows: 396000
@@ -134,30 +146,47 @@ Inserted rows: 397500
 Inserted rows: 397924
 CSV import completed successfully
 
-- CSV Export:
-  Exported query results to exported_sales_data.csv
+- CSV Export: Exported query results from RDS to exported_sales_data.csv
 
 Export Output:
 Data exported successfully
 Output file: exported_sales_data.csv
 
-- Bulk Import/Export Methods:
-  1. Python + Pandas (used)
-  2. SQL Server Import/Export Wizard
-  3. BULK INSERT
-  4. AWS DMS
+- Bulk Import/Export Methods Discussed:
+  - Python + Pandas (used)
+  - SQL Server Import/Export Wizard
+  - BULK INSERT
+  - AWS DMS
 
-Assumptions & Limitations
+## Assumptions & Limitations
 
 - Dataset: ~397,924 rows; fits on db.t3.micro instance
 - CSV schema is consistent
-- Network required to access RDS
-- Glacier archival conceptual only
+- Network connectivity required to access RDS
+- Glacier archival is conceptual
 
-Execution Proof / Logs
+## Execution Proof / Logs
 
-- S3 Upload: Success
-- Data Processing: Success
-- RDS Insert: 397,924 rows
-- SQL Queries: Verified
-- CSV Export: exported_sales_data.csv
+- S3 Upload: ✅ Success
+- Data Processing: ✅ Success
+- RDS Insert: ✅ 397,924 rows
+- SQL Queries: ✅ Verified
+- CSV Export: ✅ exported_sales_data.csv
+
+## Deliverables
+
+Python Scripts:
+
+- s3_upload_download.py
+- data_processing.py
+- insert_select_update_delete.py
+- csv_to_rds.py
+- rds_to_csv.py
+
+SQL Scripts:
+
+- create_sales_table.sql
+- analytics_queries.sql
+
+README: This file
+"""
