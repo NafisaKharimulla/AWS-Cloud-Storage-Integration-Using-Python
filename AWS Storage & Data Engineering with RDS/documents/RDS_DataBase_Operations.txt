@@ -1,0 +1,70 @@
+Task 5: AWS RDS – Database Operations
+
+Objective
+The objective of this task is to perform relational database operations on AWS RDS using Python scripts. The database used in this project is Microsoft SQL Server running on AWS RDS. Different Python scripts were executed to perform CRUD operations such as inserting, reading, updating, and deleting records from the database.
+
+Database Details
+Database Name: ecommerce
+Table Name: sales_data
+
+Table Schema
+order_id – Primary identifier for each record
+product_name – Name of the product
+category – Product category
+price – Price of the product
+quantity – Number of units purchased
+order_date – Date of the transaction
+
+Step 1: Database Connection
+A Python script was used to establish a connection with the AWS RDS SQL Server database.
+
+File: connect_rds.py
+
+Output:
+Connected to ecommerce database
+
+This confirms that the local system successfully connected to the RDS instance using the provided endpoint and credentials.
+
+Step 2: Insert Operation
+A Python script was used to insert records into the sales_data table in the RDS database.
+
+File: InsertData.py
+
+Output:
+Data inserted
+
+This confirms that the record was successfully inserted into the database.
+
+Step 3: Read Operation
+A Python script was executed to retrieve records from the database using a SELECT query.
+
+File: selectData.py
+
+Output Example:
+(1, 'Laptop', 'Electronics', 800, 1, 2024-01-10)
+
+The output shows that the data was successfully fetched from the sales_data table.
+
+Step 4: Update Operation
+A Python script was used to update existing records in the table.
+
+File: updateData.py
+
+Output:
+Data updated successfully
+
+This confirms that the specified record in the database was modified successfully.
+
+Step 5: Delete Operation
+A Python script was executed to delete a record from the table based on a condition.
+
+File: deleteData.py
+
+Output:
+Data deleted successfully
+
+This confirms that the specified record was removed from the database.
+
+Result
+All CRUD operations (Create, Read, Update, Delete) were successfully performed on the AWS RDS database using Python scripts.
+
