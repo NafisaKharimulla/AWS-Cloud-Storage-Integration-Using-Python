@@ -34,6 +34,7 @@ Database Connection: pyodbc
 
 ## Architecture Overview
 
+```
 +-----------------------+
 | Local System / EC2 |
 | (Python Scripts) |
@@ -61,6 +62,7 @@ v
 | CSV Export / Reporting|
 | - exported_sales_data.csv |
 +-----------------------+
+```
 
 ## Project Tasks & Implementation
 
@@ -167,11 +169,11 @@ Output file: exported_sales_data.csv
 
 ## Execution Proof / Logs
 
-- S3 Upload: ✅ Success
-- Data Processing: ✅ Success
-- RDS Insert: ✅ 397,924 rows
-- SQL Queries: ✅ Verified
-- CSV Export: ✅ exported_sales_data.csv
+- S3 Upload: Success
+- Data Processing: Success
+- RDS Insert: 397,924 rows
+- SQL Queries: Verified
+- CSV Export: exported_sales_data.csv
 
 ## Deliverables
 
