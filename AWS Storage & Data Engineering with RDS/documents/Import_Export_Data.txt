@@ -1,0 +1,108 @@
+PART 7: CSV IMPORT & EXPORT WITH AWS RDS
+
+Objective:
+The objective of Task 7 is to demonstrate the ability to import CSV data into an Amazon RDS database table and export query results from the database back into a CSV file. This is a common task in cloud-based data engineering workflows for handling batch data.
+
+
+1. CSV IMPORT INTO RDS
+
+The cleaned dataset stored in `cleaned_ecommerce_data.csv` was imported into the `sales_data` table.
+
+Columns in CSV:
+
+- InvoiceNo
+- StockCode
+- Description
+- Quantity
+- InvoiceDate
+- UnitPrice
+- CustomerID
+- Country
+
+The CSV data was mapped to the `sales_data` table columns as follows:
+
+| CSV Column    | Table Column      |
+|---------------|-----------------|
+| InvoiceNo     | order_id         |
+| Description   | product_name     |
+| Country       | category         |
+| UnitPrice     | price            |
+| Quantity      | quantity         |
+| InvoiceDate   | order_date       |
+
+To handle large datasets efficiently, **batch insertion** was used. The total dataset had **397,924 records**.
+
+ Output:
+
+Inserted rows: 396000  
+Inserted rows: 396500  
+Inserted rows: 397000  
+Inserted rows: 397500  
+Inserted rows: 397924  
+CSV import completed successfully
+
+Verification Query:
+
+`SELECT COUNT(*) FROM sales_data;`
+
+ Output:
+397,924 rows
+
+---
+
+2. EXPORT QUERY RESULTS FROM RDS TO CSV
+
+After importing the data, query results from the `sales_data` table were exported back into a CSV file (`exported_sales_data.csv`) for further analysis or reporting.
+
+The steps included:
+
+1. Connecting to the Amazon RDS SQL Server database.
+2. Running a SELECT query to retrieve the required data.
+3. Storing the results into a Pandas DataFrame.
+4. Exporting the DataFrame into a CSV file.
+
+Output:
+
+Data exported successfully  
+Output File: exported_sales_data.csv
+
+This file contains the top rows from the `sales_data` table and can be used for analytics or sharing.
+
+---
+
+3. DIFFERENT METHODS FOR BULK IMPORT / EXPORT
+
+Several methods exist for importing and exporting data in RDS:
+
+1. Python-based Import/Export (Used in Project)
+
+- Tools: Python, Pandas, pyodbc
+- Advantages: Easy to automate, allows preprocessing and data transformation.
+- Use Case: Medium to large datasets for cloud data pipelines.
+
+2. SQL Server Import and Export Wizard (SSMS)
+
+- Visual tool in SSMS for importing CSV/Excel data.
+- Advantages: User-friendly, no code required.
+- Limitations: Less suitable for automated pipelines.
+
+3. BULK INSERT Command
+
+- Native SQL Server command for loading large CSV files directly.
+- Advantages: Very fast for large datasets.
+- Use Case: Enterprise-scale batch ingestion.
+
+4. AWS Data Migration Service (DMS)
+
+- Managed service for migrating or replicating data between databases.
+- Advantages: Scalable, supports continuous replication.
+- Use Case: Full database migration or high-volume pipelines.
+
+---
+
+Conclusion:
+
+Task 7 successfully demonstrated both importing CSV data into an Amazon RDS SQL Server table and exporting query results back into a CSV file.  
+Nearly 398,000 rows were efficiently inserted using batch insertion. The exported CSV file can be used for reporting or analytics.  
+
+Multiple methods for bulk import/export were also highlighted, providing options for different scenarios in cloud-based data engineering workflows.
