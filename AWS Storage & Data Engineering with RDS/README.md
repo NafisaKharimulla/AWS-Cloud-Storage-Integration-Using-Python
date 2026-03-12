@@ -21,39 +21,38 @@ Dataset
 - Columns: InvoiceNo (PK), StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID, Country
 
 Architecture Overview
-'''
-Local System / EC2
+
+"""
+Architecture Overview:
+
++-----------------------+
+| Local System / EC2 |
+| (Python Scripts) |
++-----------+-----------+
 |
-| Python Scripts (Boto3, Pandas, pyodbc)
+| Upload CSV / Run Scripts
 v
-
----
-
-| Amazon S3 Bucket | -> Raw & Processed Data
-
----
-
-       |
-       | Data Processing & Transformation
-       v
-
----
-
-| Amazon RDS SQL | -> sales_data table
-
----
-
-       |
-       | SQL Queries / Analytics
-       v
-
----
-
-| CSV Export / BI |
-
----
-
-'''
++-----------------------+
+| Amazon S3 |
+| - /raw/ |
+| - /processed/ |
++-----------+-----------+
+|
+| Data Processing (Pandas / PySpark)
+v
++-----------------------+
+| AWS RDS SQL |
+| - ecommerce DB |
+| - sales_data table |
++-----------+-----------+
+|
+| SQL Queries / Analytics
+v
++-----------------------+
+| CSV Export / Reporting|
+| - exported_sales_data.csv |
++-----------------------+
+"""
 
 Project Tasks & Implementation
 
